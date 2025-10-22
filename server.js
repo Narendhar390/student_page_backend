@@ -11,6 +11,7 @@ app.use(cors({
 const studentrouter=require("./Routers/router")
 const dotenv=require("dotenv")
 dotenv.config()
+const port=process.env.PORT||5000
 const mongoose=require("mongoose")
 mongoose.connect(process.env.MONGO_URI).then(()=>{console.log("Data base connection sucessfull")}).catch((err)=>{
     console.log("Error in database connection",err.message)
@@ -19,6 +20,6 @@ app.use("/api/students/",studentrouter);
 app.get("/",(req,res)=>{
     res.send("Hello from express js server");
 })
-app.listen(5000,()=>{
-    console.log("App start running.....")
+app.listen(port,()=>{
+    console.log(`App stated running on port ${port}`)
 })
